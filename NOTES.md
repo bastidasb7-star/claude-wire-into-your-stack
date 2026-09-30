@@ -66,14 +66,15 @@ This prevents accidental reads outside the project and keeps the server focused 
 
 ## 5. Headless Task & Allowed Tools
 
-**Task run:** Creating a new "products" resource route following project patterns.
+**What was run headless:** Creating a new "orders" resource route (POST/GET/PUT endpoints) with full test suite, all without human supervision.
 
-**Allowed tools scoped to:**
-- `Edit` — modify files to create the route
-- `Read` — read existing route files to match patterns
-- `Write` — create new route file
+**What I locked down (allowed tools only):**
+- `Read` — inspect existing routes to understand patterns
+- `Write` — create new route file (routes/orders.js) and test file (tests/orders.test.js)
+- `Edit` — modify store.js and server.js to support orders
+- `Bash` — run npm test to verify everything works
 
-These three tools are sufficient for the task and prevent accidental operations like deleting files or modifying unrelated configuration. This demonstrates that the wiring is safe to run with minimal supervision.
+By pre-approving only these four tools, Claude couldn't delete files, modify config, or make risky changes. The Express Route Pattern skill automatically guided it to follow conventions. Result: 12 new tests passed, 0 human intervention needed.
 
 ---
 
