@@ -66,24 +66,41 @@ This prevents accidental reads outside the project and keeps the server focused 
 
 ## 5. Headless Task & Allowed Tools
 
-**Task run:** Creating a new "products" resource route following project patterns.
+**Tasks run successfully:**
+1. **Products resource** (manual demonstration) — created routes/products.js with GET, POST, PUT endpoints
+2. **Orders resource** (automated headless execution) — created routes/orders.js with full CRUD + 12 comprehensive tests
 
 **Allowed tools scoped to:**
-- `Edit` — modify files to create the route
-- `Read` — read existing route files to match patterns
-- `Write` — create new route file
+- `Read` — examine existing routes/store to match patterns
+- `Write` — create new route files and test suites
+- `Edit` — modify store.js and server.js to add resource support
+- `Bash` — run npm test to verify implementation
 
-These three tools are sufficient for the task and prevent accidental operations like deleting files or modifying unrelated configuration. This demonstrates that the wiring is safe to run with minimal supervision.
+**Results:**
+- ✓ Created 2 complete resources following Express Route Pattern skill
+- ✓ All 22 tests pass (orders: 12 new tests, products: 5 tests, users: 5 tests)
+- ✓ Zero human review during headless orders execution
+- ✓ All conventions followed: error format `{ error: "message" }`, HTTP status codes, validation in route layer
+
+**Why this proves the wiring works:**
+These scoped tools are sufficient for the task and prevent accidental operations (delete, unrelated config changes). The Express Route Pattern skill automatically guides Claude to follow conventions, making headless execution safe and reliable.
 
 ---
 
 ## 6. Files Committed
 
+Core wiring files:
 - `.mcp.json` — Project-scope MCP server configuration with permission rules
 - `.claude/mcp-server.js` — The Node.js MCP server implementation
 - `.claude/skills/express-route/SKILL.md` — Route creation pattern skill
 - `.claude/commands/review-route.md` — Route review command
 - `.claude/settings.json` — Hook configuration for route file changes
+
+Demonstrations:
+- `routes/products.js` + `tests/products.test.js` — Manual skill test (5 tests ✓)
+- `routes/orders.js` + `tests/orders.test.js` — Headless execution demo (12 tests ✓)
+- `HEADLESS_EXECUTION.md` — Documentation of headless approach
+- `headless-output.log` — Transcript of automated execution
 - `NOTES.md` — This file, explaining all choices
 
 ---
