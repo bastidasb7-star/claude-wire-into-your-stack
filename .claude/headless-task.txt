@@ -1,0 +1,21 @@
+Create a new orders resource route following Express Route Pattern conventions.
+
+Requirements:
+1. Create routes/orders.js with:
+   - GET / to list all orders
+   - GET /:id to fetch one order (return 404 if not found)
+   - POST / to create an order (require customerId and amount)
+   - PUT /:id to update an order
+
+2. Update db/store.js to add order management functions
+
+3. Mount in server.js at /orders
+
+4. Create tests/orders.test.js with test cases for all endpoints
+
+5. Run npm test to verify everything works
+
+Follow the existing conventions:
+- Error format: { error: "message" }
+- Validation in route, 400 for bad input, 404 for missing resources
+- 201 status for POST creation

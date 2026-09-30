@@ -1,0 +1,29 @@
+Perfect! I've successfully created the orders resource following the Express Route Pattern conventions. Here's what was implemented:
+
+## Summary of Changes
+
+**1. db/store.js** — Added order management functions:
+   - `listOrders()` — get all orders
+   - `getOrder(id)` — fetch a single order
+   - `createOrder()` — create with userId, productId, quantity, and optional status (defaults to 'pending')
+   - `updateOrder()` — update status and/or quantity
+   - Seeded with 2 sample orders
+
+**2. routes/orders.js** — Created with all required endpoints:
+   - `GET /orders` — lists all orders
+   - `GET /orders/:id` — fetches one order or 404
+   - `POST /orders` — creates order (requires userId, productId, quantity; status optional)
+   - `PUT /orders/:id` — updates status and/or quantity
+
+**3. server.js** — Mounted orders router at `/orders`
+
+**4. tests/orders.test.js** — 12 comprehensive tests covering:
+   - List and fetch operations
+   - Create with default and custom status
+   - Validation (missing fields return 400)
+   - Update status and quantity
+   - 404 handling for missing orders
+
+**All 22 tests pass** ✅ (12 new orders tests + 10 existing tests for users/products)
+
+The resource follows all conventions: error format `{ error: "message" }`, proper status codes (201 for create, 404 for missing, 400 for invalid input), and all data access through the store.
